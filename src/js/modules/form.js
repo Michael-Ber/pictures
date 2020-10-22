@@ -1,4 +1,4 @@
-import postData from "../services/postData";
+import {postData} from "../services/requests";
 
 const form = (formSelector) => {
     const forms = document.querySelectorAll(formSelector);
@@ -29,14 +29,6 @@ const form = (formSelector) => {
     });
     
     forms.forEach(form => {
-        let phoneInputs = document.querySelectorAll('[name = phone]');
-        // phoneInputs.forEach(input => {
-        //     input.addEventListener('click', () => {
-        //         input.value = '7___ __ __ ___';
-        //     });
-  
-        // });
-        
         
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -100,25 +92,7 @@ const form = (formSelector) => {
 
 
     });
-    function showThanksModal(message) {
-        const prevModal = document.querySelector('[data-active]'),
-              prevDialogScreen = prevModal.querySelector('.popup-dialog');
-        prevDialogScreen.style.display = 'none';
-        let newDialogScreen = document.createElement('div');
-        newDialogScreen.classList.add('popup-dialog');
-        newDialogScreen.innerHTML = `
-            <div class=popup-content>
-                <button class=popup-close data-close>&times;</button>
-                <h4>${message}</h4>
-            </div>
-        `;
-        prevModal.append(newDialogScreen);
-        let timerId = setTimeout(() => {
-            newDialogScreen.remove();
-            prevDialogScreen.style.display = 'block';
-        }, 3000);
-
-    }
+  
 };
 
 export default form;

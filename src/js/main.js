@@ -1,6 +1,9 @@
 import carousel from "./modules/carousel";
 import modals from "./modules/modals";
 import form from "./modules/form";
+import mask from "./modules/mask";
+import checkTextInputs from "./modules/checkTextInputs";
+import moreStyles from "./modules/moreStyles";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -8,4 +11,8 @@ window.addEventListener('DOMContentLoaded', () => {
     carousel('.main-slider-item', 'vertical');
     modals();
     form('form');
+    mask('[name="phone"]');
+    checkTextInputs('[name="name"]');
+    checkTextInputs('[name="message"]');
+    moreStyles('.button-styles', '.styles .row', 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1', 'hidden-lg hidden-md hidden-sm hidden-xs styles-2');
 });
