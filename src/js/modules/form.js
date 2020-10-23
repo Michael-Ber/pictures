@@ -1,8 +1,10 @@
 import {postData} from "../services/requests";
 
-const form = (formSelector) => {
-    const forms = document.querySelectorAll(formSelector);
-    const upload = document.querySelectorAll('[name = "upload"]');
+const form = (formSelector, obj) => {
+    const forms = document.querySelectorAll(formSelector),
+          sumCalc = document.querySelector('.calc-price'),
+          upload = document.querySelectorAll('[name = "upload"]');
+
     const messageBox = {
         loading: "идет отправка",
         success: "Спасибо! Скоро мы с вами свяжемся",
@@ -15,6 +17,7 @@ const form = (formSelector) => {
         designer: "assets/server.php",
         question: "assets/question.php"
     };
+
     let statusMessage;
     
     upload.forEach(input => {
@@ -32,7 +35,7 @@ const form = (formSelector) => {
         
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-   
+            console.log(obj.sum);
             statusMessage = document.createElement('div');
             let statusImg = document.createElement('img');
             statusImg.style.cssText = `
@@ -57,6 +60,11 @@ const form = (formSelector) => {
             
 
             let formData = new FormData(form);
+            if(obj.sum !== 'Для расчета нужно выбрать размер картины и материал картины') {
+                for(let key in obj) {
+                    formData.append(key, obj[key]);
+                }
+            }
             let api;
             
             form.closest('.popup-design') || form.classList.contains('calc_form') ? api = path.designer : api = path.question;
@@ -68,7 +76,6 @@ const form = (formSelector) => {
                 .then(() => {
                     statusMessage.textContent = messageBox.success;
                     statusImg.setAttribute('src', messageBox.ok);
-                    
                 })
                 .catch(() => {
                     statusMessage.textContent = messageBox.failure;
@@ -86,11 +93,16 @@ const form = (formSelector) => {
                         form.classList.add('fadeInUp');
                         form.style.display = 'block';
                     }, 3000);
-                    
                 });
+            if(form.classList.contains('calc_form')) {
+                postData(path.question, formData)
+                    .then(data => console.log(data))
+                    .catch(error => console.log(error))
+                    .finally(() => {
+                        sumCalc.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
+                    });
+            }
         });
-
-
     });
   
 };

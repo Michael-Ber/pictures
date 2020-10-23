@@ -15,7 +15,7 @@ const moreStyles = (btnSelector, parentSelector, visibleClass) => {
             object-fit: cover;
         `;
         elemsParent.append(spinner);
-        getResource('db.json')
+        getResource('http://localhost:3000/styles')
             .then(response => createCard(response.styles))
             .catch((error) => {
                 let message = document.createElement('span');
