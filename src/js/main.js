@@ -7,6 +7,7 @@ import moreStyles from "./modules/moreStyles";
 import calculator from "./modules/calculator";
 import tabs from "./modules/tabs";
 import hoverPic from "./modules/hoverPic";
+import accordion from "./modules/accordion";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -22,5 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
     moreStyles('.button-styles', '.styles .row', 'col-sm-3 col-sm-offset-0 col-xs-10 col-xs-offset-1', 'hidden-lg hidden-md hidden-sm hidden-xs styles-2');
     calculator('#size', '#material', '#options', '.promocode', '.calc-price', obj);
     tabs('.portfolio-menu', '.portfolio-block');
-    hoverPic();
+    hoverPic('.sizes-block', '.sizes-block img');
+    accordion('.accordion-heading');
 });
