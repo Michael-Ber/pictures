@@ -8,6 +8,7 @@ import calculator from "./modules/calculator";
 import tabs from "./modules/tabs";
 import hoverPic from "./modules/hoverPic";
 import accordion from "./modules/accordion";
+import scrolling from "./modules/scrolling";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -25,4 +26,5 @@ window.addEventListener('DOMContentLoaded', () => {
     tabs('.portfolio-menu', '.portfolio-block');
     hoverPic('.sizes-block', '.sizes-block img');
     accordion('.accordion-heading');
+    scrolling('.pageup');
 });
