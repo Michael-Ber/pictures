@@ -35,7 +35,6 @@ const form = (formSelector, obj) => {
         
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log(obj.sum);
             statusMessage = document.createElement('div');
             let statusImg = document.createElement('img');
             statusImg.style.cssText = `

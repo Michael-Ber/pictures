@@ -9,6 +9,7 @@ import tabs from "./modules/tabs";
 import hoverPic from "./modules/hoverPic";
 import accordion from "./modules/accordion";
 import scrolling from "./modules/scrolling";
+import drop from "./modules/drop";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -27,4 +28,5 @@ window.addEventListener('DOMContentLoaded', () => {
     hoverPic('.sizes-block', '.sizes-block img');
     accordion('.accordion-heading');
     scrolling('.pageup');
+    drop();
 });
